@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum ControlType {
-
-}
+using static GlobalContainer;
 
 public abstract class Possesable : MonoBehaviour {
 
@@ -19,9 +17,14 @@ public abstract class Possesable : MonoBehaviour {
         AnyBehavior();
     }
 
-    public abstract void DefaultBehavior();
-    public abstract void PossessedBehavior();
-    public abstract void AnyBehavior();
+    public virtual void DefaultBehavior() { }
+    public virtual void PossessedBehavior() { }
+    public virtual void AnyBehavior() { }
+
+    public virtual void OnPossess() {
+        Global.possesor.SetPossessed(this);
+    }
+
 
 }
 

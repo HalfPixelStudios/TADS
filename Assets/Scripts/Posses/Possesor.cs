@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class Possesor : MonoBehaviour {
 
-    Possesable possesable;
+    public Possesable possesable;
 
-    void Start() {
-        
+    private void Awake() {
+        //start off by possessing the camera
+        SetPossessed((Possesable)FindObjectOfType(typeof(CameraController)));
     }
 
-    void Update() {
-        
+    public void SetPossessed(Possesable target) {
+        if (possesable != null) {
+            possesable.isPossessed = false;
+        }
+        target.isPossessed = true;
     }
+
+    /*
+    private void OnDrawGizmos() {
+        if (possesable == null) { return; }
+        Gizmos.DrawIcon(possesable.transform.position,);
+    }
+    */
 }
