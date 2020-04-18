@@ -8,7 +8,8 @@ public class TrafficFSM : MonoBehaviour
     public List<TrafficLightPoint> NSLights=new List<TrafficLightPoint>();
 
     public List<TrafficLightPoint> EWLights = new List<TrafficLightPoint>();
-    
+
+    public float lightTime;
     // Start is called before the first frame update
     private bool NSGo;
     private float timer=0;
@@ -26,7 +27,7 @@ public class TrafficFSM : MonoBehaviour
     private void FixedUpdate()
     {
         timer += Time.deltaTime;
-        if (timer > 5)
+        if (timer > lightTime)
         {
             NSGo = !NSGo;
             updateLights();

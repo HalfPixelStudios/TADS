@@ -8,8 +8,6 @@ public class PathAI : MonoBehaviour
 
     public WayPoint node;
 
-    public bool turning;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +25,12 @@ public class PathAI : MonoBehaviour
     //called by waypoints
     public void setTarget()
     {
-        if ((int)node.transform.position.x != (int)target.x && (int)node.transform.position.z != (int)target.z)
+        if (node == null)
         {
-            
-            
-            
+            target = Vector3.zero;
+            return;
         }
+        
         this.target = new Vector3(node.transform.position.x,0,node.transform.position.z);
     }
 

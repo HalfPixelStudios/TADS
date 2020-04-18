@@ -44,6 +44,8 @@
         <e p="Shaders" t="Include">
           <e p="Basic.shader" t="Include" />
           <e p="Cel.shader" t="Include" />
+          <e p="SurfaceCel.shader" t="Include" />
+          <e p="Test.shader" t="Include" />
         </e>
       </e>
       <e p="BabyDayOut.sln" t="IncludeFlat" />

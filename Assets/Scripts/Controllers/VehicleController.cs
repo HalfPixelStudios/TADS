@@ -26,13 +26,18 @@ public class VehicleController : Possesable
         {
             _pathAi.setNextNode();
         }
-        if (_pathAi.target != null)
+        if (_pathAi.target != Vector3.zero)
         {
+            
 
             transform.LookAt(_pathAi.target);
             rb.velocity = transform.forward * speed;
             
 
+        }
+        else
+        {
+            rb.velocity=Vector3.zero;
         }
         
         

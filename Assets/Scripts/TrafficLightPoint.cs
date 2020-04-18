@@ -32,10 +32,13 @@ public class TrafficLightPoint : WayPoint
 
     public override void setNextNode(PathAI pathAi)
     {
+        print(state);
         if (state == TrafficLight.RED)
         {
             listeners.Add(pathAi);
-            
+            pathAi.node = null;
+            pathAi.setTarget();
+
         }
         else
         {
