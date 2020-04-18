@@ -51,18 +51,22 @@ public class CameraController : Possesable {
         //Rotate camera input
         if (Input.GetKeyDown(KeyCode.Q) && rotateScale == 0) { //rotate left around focus
 
-            rotateScale = -1;
+            rotateScale = 1;
         } else if (Input.GetKeyDown(KeyCode.E) && rotateScale == 0) {
 
-            rotateScale = 1;
+            rotateScale = -1;
         }
 
         if (rotateScale != 0) {
-            //cam.transform.RotateAround
+            float step = Time.deltaTime * rotateSpeed * rotateScale;
+            cam.transform.RotateAround(transform.position, Vector3.up, step);
+            rotatedSoFar += Mathf.Abs(step);
         }
 
         if (rotatedSoFar > 90) {
-
+            cam.transform.RotateAround(transform.position, Vector3.up, (rotatedSoFar-90)*rotateScale*(-1));
+            rotateScale = 0;
+            rotatedSoFar = 0;
         }
 
         

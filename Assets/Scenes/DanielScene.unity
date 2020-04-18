@@ -942,7 +942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPossessed: 0
   panSpeed: 2
-  rotateSpeed: 20
+  rotateSpeed: 200
 --- !u!1 &604291948
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,6 +2090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 0}
+  turnPoints: {fileID: 0}
 --- !u!1001 &1704460341
 PrefabInstance:
   m_ObjectHideFlags: 0
