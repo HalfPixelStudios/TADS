@@ -31,6 +31,9 @@ public class VehicleController : Possesable
             
 
             transform.LookAt(_pathAi.target);
+            var angles = transform.rotation.eulerAngles;
+            transform.rotation=Quaternion.Euler(0,angles.y,0);
+            
             rb.velocity = transform.forward * speed;
             
 
@@ -45,6 +48,11 @@ public class VehicleController : Possesable
 
     public override void PossessedBehavior()
     {
-        throw new System.NotImplementedException();
+        float turn = Input.GetAxis("Horizontal");
+        float dir = Input.GetAxis("Vertical");
+        
+        rb.AddTorque(new Vector3(0,turn,0));
+        
+        rb.AddForce(dir*transform.forward);
     }
 }

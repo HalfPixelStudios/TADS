@@ -18,6 +18,8 @@
         <e p="Scripts" t="Include">
           <e p="Controllers" t="Include">
             <e p="CameraController.cs" t="Include" />
+            <e p="PedestrianController.cs" t="Include" />
+            <e p="RobberController.cs" t="Include" />
             <e p="VehicleController.cs" t="Include" />
           </e>
           <e p="FSM" t="Include">
