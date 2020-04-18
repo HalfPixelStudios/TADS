@@ -12,7 +12,7 @@ public class CameraController : Possesable {
 
     //Camera Rotation
     float target = 0;
-    bool isRotating;
+    int rotateScale = 0;
     float rotatedSoFar = 0;
 
     void Awake() {
@@ -49,33 +49,20 @@ public class CameraController : Possesable {
 
     public override void AnyBehavior() {
         //Rotate camera input
-        if (Input.GetKeyDown(KeyCode.Q) && !isRotating) { //rotate left around focus
-            target = cam.transform.rotation.y - Mathf.PI/2;
-            isRotating = true;
-        } else if (Input.GetKeyDown(KeyCode.E) && !isRotating) {
-            target = cam.transform.rotation.y - Mathf.PI / 2;
-            isRotating = true;
+        if (Input.GetKeyDown(KeyCode.Q) && rotateScale == 0) { //rotate left around focus
+
+            rotateScale = -1;
+        } else if (Input.GetKeyDown(KeyCode.E) && rotateScale == 0) {
+
+            rotateScale = 1;
         }
 
-        if (isRotating) {
-            float step = Mathf.Lerp(cam.transform.rotation.y,target,Time.deltaTime*rotateSpeed);
-
-            /*
-            Debug.Log($"{cam.transform.rotation.y}, {target}, {AngleDifference(cam.transform.rotation.y, target)}, {step}");
-            if (AngleDifference(cam.transform.rotation.y,target) <= Mathf.Abs(step)) {
-                Debug.Log("end");
-                //cam.transform.rotation = Quaternion.Euler(transform.rotation.x,target,transform.rotation.z);
-                isRotating = false;
-            }
-            */
-            cam.transform.RotateAround(transform.position, Vector3.up, step);
-            rotatedSoFar += Mathf.Abs(step);
+        if (rotateScale != 0) {
+            //cam.transform.RotateAround
         }
 
         if (rotatedSoFar > 90) {
-            isRotating = false;
-            rotatedSoFar = 0;
-            cam.transform.rotation = Quaternion.Euler(transform.rotation.x, target, transform.rotation.z);
+
         }
 
         
@@ -85,31 +72,5 @@ public class CameraController : Possesable {
         
     }
 
-    public static float AngleDifference(float a, float b) {
-        return AngleNormalizer(Mathf.Abs(AngleNormalizer(a) - AngleNormalizer(b)));
-    }
-    public static float AngleNormalizer(float a) {
-        
-        if (a > Mathf.PI*2) {
-            float result = a;
-            while (result > Mathf.PI*2) {
-                result -= Mathf.PI * 2;
-            }
-            return result;
-        } else if (a < 0) {
-            float result = a;
-            while (result < 0) {
-                result += Mathf.PI * 2;
-            }
-            return result;
-        }
-        return a;
-    }
-
-    /*
-    public static float AngleDist(float a, float b) {
-        float phi = Mathf.Abs()
-    }
-    */
 
 }
