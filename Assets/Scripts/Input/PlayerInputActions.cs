@@ -25,6 +25,22 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""e460b0ee-09a0-472b-810e-75ebac99f5ac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae487af2-ff4e-4acc-bc3b-1ea36108c7fd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -137,6 +153,28 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""351302cf-6a7a-4515-8200-7b023841d018"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e5e0944-49a2-4d81-83e9-64dfc0e09001"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -146,6 +184,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         // CameraActions
         m_CameraActions = asset.FindActionMap("CameraActions", throwIfNotFound: true);
         m_CameraActions_Pan = m_CameraActions.FindAction("Pan", throwIfNotFound: true);
+        m_CameraActions_RotateLeft = m_CameraActions.FindAction("RotateLeft", throwIfNotFound: true);
+        m_CameraActions_RotateRight = m_CameraActions.FindAction("RotateRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -196,11 +236,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_CameraActions;
     private ICameraActionsActions m_CameraActionsActionsCallbackInterface;
     private readonly InputAction m_CameraActions_Pan;
+    private readonly InputAction m_CameraActions_RotateLeft;
+    private readonly InputAction m_CameraActions_RotateRight;
     public struct CameraActionsActions
     {
         private @PlayerInputActions m_Wrapper;
         public CameraActionsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pan => m_Wrapper.m_CameraActions_Pan;
+        public InputAction @RotateLeft => m_Wrapper.m_CameraActions_RotateLeft;
+        public InputAction @RotateRight => m_Wrapper.m_CameraActions_RotateRight;
         public InputActionMap Get() { return m_Wrapper.m_CameraActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -213,6 +257,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Pan.started -= m_Wrapper.m_CameraActionsActionsCallbackInterface.OnPan;
                 @Pan.performed -= m_Wrapper.m_CameraActionsActionsCallbackInterface.OnPan;
                 @Pan.canceled -= m_Wrapper.m_CameraActionsActionsCallbackInterface.OnPan;
+                @RotateLeft.started -= m_Wrapper.m_CameraActionsActionsCallbackInterface.OnRotateLeft;
+                @RotateLeft.performed -= m_Wrapper.m_CameraActionsActionsCallbackInterface.OnRotateLeft;
+                @RotateLeft.canceled -= m_Wrapper.m_CameraActionsActionsCallbackInterface.OnRotateLeft;
+                @RotateRight.started -= m_Wrapper.m_CameraActionsActionsCallbackInterface.OnRotateRight;
+                @RotateRight.performed -= m_Wrapper.m_CameraActionsActionsCallbackInterface.OnRotateRight;
+                @RotateRight.canceled -= m_Wrapper.m_CameraActionsActionsCallbackInterface.OnRotateRight;
             }
             m_Wrapper.m_CameraActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -220,6 +270,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Pan.started += instance.OnPan;
                 @Pan.performed += instance.OnPan;
                 @Pan.canceled += instance.OnPan;
+                @RotateLeft.started += instance.OnRotateLeft;
+                @RotateLeft.performed += instance.OnRotateLeft;
+                @RotateLeft.canceled += instance.OnRotateLeft;
+                @RotateRight.started += instance.OnRotateRight;
+                @RotateRight.performed += instance.OnRotateRight;
+                @RotateRight.canceled += instance.OnRotateRight;
             }
         }
     }
@@ -227,5 +283,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     public interface ICameraActionsActions
     {
         void OnPan(InputAction.CallbackContext context);
+        void OnRotateLeft(InputAction.CallbackContext context);
+        void OnRotateRight(InputAction.CallbackContext context);
     }
 }
