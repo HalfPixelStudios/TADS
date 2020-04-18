@@ -6,6 +6,7 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
+          <e p="TrafficControllerEditor.cs" t="Include" />
           <e p="WayPointEditor.cs" t="Include" />
           <e p="WayPointManagerWindow.cs" t="Include" />
         </e>
@@ -15,7 +16,26 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Controllers" t="Include">
+            <e p="CameraController.cs" t="Include" />
+            <e p="VehicleController.cs" t="Include" />
+          </e>
+          <e p="FSM" t="Include">
+            <e p="TrafficFSM.cs" t="Include" />
+          </e>
+          <e p="Input" t="Include">
+            <e p="PlayerInputActions.cs" t="Include" />
+            <e p="SelectableObject.cs" t="Include" />
+          </e>
+          <e p="Managers" t="Include">
+            <e p="GlobalContainer.cs" t="Include" />
+            <e p="InputManager.cs" t="Include" />
+          </e>
           <e p="PathAI.cs" t="Include" />
+          <e p="Posses" t="Include">
+            <e p="Possesable.cs" t="Include" />
+            <e p="Possesor.cs" t="Include" />
+          </e>
           <e p="TrafficLightPoint.cs" t="Include" />
           <e p="WayPoint.cs" t="Include" />
         </e>

@@ -18,16 +18,15 @@ public class WayPoint : MonoBehaviour
     {
         
     }
-
-    void AssignTarget(PathAI pathAi)
-    {
-        //pathAi.target = 
-        
-        
-    }
-
-    Vector2 GetPosition()
+    
+    public virtual Vector2 GetPosition()
     {
         return new Vector2(transform.position.x,transform.position.z);
+    }
+
+    public virtual void setNextNode(PathAI pathAi)
+    {
+        pathAi.node=connections[Random.Range(0, connections.Count)];
+        pathAi.setTarget();
     }
 }
