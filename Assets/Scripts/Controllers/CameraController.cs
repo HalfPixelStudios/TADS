@@ -31,9 +31,11 @@ public class CameraController : Possesable {
         if (pan_inp != Vector2.zero) {
             Vector3 pos = transform.position;
 
-            pos += new Vector3(pan_inp.x + cam.transform.forward.x, 0, pan_inp.y + cam.transform.forward.y) * panSpeed * Time.deltaTime;
+            //move in direction cam is facing
+            Vector3 forward = new Vector3(cam.transform.forward.x, 0, cam.transform.forward.z).normalized;
+            pos += forward * pan_inp.y * panSpeed * Time.deltaTime;
+            pos += cam.transform.right * pan_inp.x * panSpeed * Time.deltaTime;
 
-            //transform.Translate(new Vector3(pan_inp.x, 0, pan_inp.y) * panSpeed * Time.deltaTime);
             transform.position = pos;
         }
 
@@ -74,6 +76,10 @@ public class CameraController : Possesable {
         //Camera always looks at focus
         cam.transform.LookAt(cam.transform.parent);
         
+    }
+
+    public static float Unitize(float x) {
+        return x / Mathf.Abs(x);
     }
 
 
