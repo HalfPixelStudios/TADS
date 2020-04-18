@@ -27,6 +27,7 @@
             <e p="PlayerInputActions.cs" t="Include" />
             <e p="SelectableObject.cs" t="Include" />
           </e>
+          <e p="LightController.cs" t="Include" />
           <e p="Managers" t="Include">
             <e p="GlobalContainer.cs" t="Include" />
             <e p="InputManager.cs" t="Include" />
@@ -36,8 +37,15 @@
             <e p="Possesable.cs" t="Include" />
             <e p="Possesor.cs" t="Include" />
           </e>
+          <e p="RotateLmao.cs" t="Include" />
           <e p="TrafficLightPoint.cs" t="Include" />
           <e p="WayPoint.cs" t="Include" />
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="Basic.shader" t="Include" />
+          <e p="Cel.shader" t="Include" />
+          <e p="SurfaceCel.shader" t="Include" />
+          <e p="Test.shader" t="Include" />
         </e>
       </e>
       <e p="BabyDayOut.sln" t="IncludeFlat" />

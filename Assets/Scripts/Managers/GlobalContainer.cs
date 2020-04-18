@@ -7,6 +7,7 @@ public class GlobalContainer : MonoBehaviour {
 
     public static GlobalContainer Global;
     [HideInInspector] public InputManager inputManager;
+    public Transform turnPoints;
 
     void Awake() {
         Global = this;

@@ -7,6 +7,7 @@ public class PathAI : MonoBehaviour
     public Vector3 target;
 
     public WayPoint node;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,12 @@ public class PathAI : MonoBehaviour
     //called by waypoints
     public void setTarget()
     {
+        if (node == null)
+        {
+            target = Vector3.zero;
+            return;
+        }
+        
         this.target = new Vector3(node.transform.position.x,0,node.transform.position.z);
     }
 
