@@ -20,6 +20,10 @@ public class WayPointEditor
         Gizmos.DrawSphere(wayPoint.transform.position,5f);
         Gizmos.color=Color.blue;
 
+        if (wayPoint.connections.Count == 0)
+        {
+            return;
+        }
         foreach (WayPoint node in wayPoint.connections )
         {
             Gizmos.DrawLine(wayPoint.transform.position,node.transform.position);

@@ -5,19 +5,18 @@ using UnityEngine;
 
 public class TrafficFSM : MonoBehaviour
 {
-    public List<TrafficLightPoint> NSLights;
+    public List<TrafficLightPoint> NSLights=new List<TrafficLightPoint>();
 
-    public List<TrafficLightPoint> EWLights;
-
-    public List<TrafficLightPoint> PedNSLights;
-
-    public List<TrafficLightPoint> PedEWLights;
+    public List<TrafficLightPoint> EWLights = new List<TrafficLightPoint>();
+    
     // Start is called before the first frame update
     private bool NSGo;
     private float timer=0;
     void Start()
     {
         NSGo = true;
+        
+        
         
 
 
@@ -31,6 +30,7 @@ public class TrafficFSM : MonoBehaviour
         {
             NSGo = !NSGo;
             updateLights();
+            timer = 0;
         }
     }
 
@@ -39,18 +39,15 @@ public class TrafficFSM : MonoBehaviour
         
         TrafficLightPoint.TrafficLight NS;
         TrafficLightPoint.TrafficLight EW;
-        
         if (NSGo)
         {
             NS = TrafficLightPoint.TrafficLight.GREEN;
             EW = TrafficLightPoint.TrafficLight.RED;
-
         }
         else
         {
             NS = TrafficLightPoint.TrafficLight.RED;
             EW = TrafficLightPoint.TrafficLight.GREEN;
-            
         }
         
         foreach (var l in NSLights)
@@ -58,16 +55,6 @@ public class TrafficFSM : MonoBehaviour
             l.setState(NS);
         }
         foreach (var l in EWLights)
-        {
-            l.setState(EW);
-
-        }
-        foreach (var l in PedNSLights)
-        {
-            l.setState(NS);
-
-        }
-        foreach (var l in PedEWLights)
         {
             l.setState(EW);
 

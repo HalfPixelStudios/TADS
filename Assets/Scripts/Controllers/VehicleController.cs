@@ -7,13 +7,14 @@ public class VehicleController : Possesable
     // Start is called before the first frame update
     private PathAI _pathAi;
     private Rigidbody rb;
-    private float speed;
-    private float stoppingDistance;
+    [SerializeField]private float speed;
+    [SerializeField]private float stoppingDistance;
     public bool stopTrigger;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         _pathAi = GetComponent<PathAI>();
+        _pathAi.setTarget();
 
 
     }
@@ -27,8 +28,10 @@ public class VehicleController : Possesable
         }
         if (_pathAi.target != null)
         {
+
             transform.LookAt(_pathAi.target);
             rb.velocity = transform.forward * speed;
+            
 
         }
         
