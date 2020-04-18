@@ -55,4 +55,8 @@ public class VehicleController : Possesable
         
         rb.AddForce(dir*transform.forward);
     }
+
+    public override void AnyBehavior() {
+        
+    }
 }
