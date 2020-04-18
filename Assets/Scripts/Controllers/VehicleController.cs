@@ -39,4 +39,8 @@ public class VehicleController : Possesable
     {
         throw new System.NotImplementedException();
     }
+
+    public override void AnyBehavior() {
+        
+    }
 }

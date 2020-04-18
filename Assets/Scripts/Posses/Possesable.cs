@@ -15,11 +15,13 @@ public abstract class Possesable : MonoBehaviour {
             PossessedBehavior();
         } else {
             DefaultBehavior();
-        }     
+        }
+        AnyBehavior();
     }
 
     public abstract void DefaultBehavior();
     public abstract void PossessedBehavior();
+    public abstract void AnyBehavior();
 
 }
 
