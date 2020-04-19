@@ -17,7 +17,7 @@ public class PedestrianController : Possesable
 
 
     }
-    public virtual void DefaultBehavior()
+    public override void DefaultBehavior()
     {
         if (_pathAi.target != null)
         {
@@ -39,12 +39,12 @@ public class PedestrianController : Possesable
         
     }
 
-    public virtual void PossessedBehavior()
+    public override void PossessedBehavior()
     {
-        
+
         float turn = Input.GetAxis("Horizontal");
         float dir = Input.GetAxis("Vertical");
-        if (dir != 0)
+        if (dir == 0)
         {
             anim.SetBool("moving",false);
             
@@ -55,8 +55,8 @@ public class PedestrianController : Possesable
         }
         
         rb.angularVelocity=new Vector3(0,turn*5,0);
-        print(transform.forward);
-        rb.velocity = dir * transform.forward * speed*5;
+        rb.velocity = dir * transform.forward * speed;
+        print(rb.velocity);
 
     }
     
