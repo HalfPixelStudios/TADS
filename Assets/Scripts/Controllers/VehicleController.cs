@@ -9,7 +9,6 @@ public class VehicleController : Possesable
     private Rigidbody rb;
     [SerializeField]private float speed;
     [SerializeField]private float stoppingDistance;
-    public bool stopTrigger;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -51,9 +50,8 @@ public class VehicleController : Possesable
         float turn = Input.GetAxis("Horizontal");
         float dir = Input.GetAxis("Vertical");
         
-        rb.AddTorque(new Vector3(0,turn,0));
-        
-        rb.AddForce(dir*transform.forward);
+        rb.angularVelocity=new Vector3(0,turn,0);
+        rb.AddForce(dir*transform.forward*speed);
     }
 
     public override void AnyBehavior() {
