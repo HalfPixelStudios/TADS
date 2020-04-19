@@ -45,6 +45,7 @@ public class CameraController : Possesable {
         if (Input.GetMouseButtonDown(0)) {
 
             //first find position on output screen and map it to capture cam
+            Debug.Log(Global.screenManager.GetScreenClick());
 
 
             //ray cast and take the first possessable object we hit
