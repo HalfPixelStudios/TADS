@@ -9,6 +9,12 @@
 		_LightingScale("Lighting Scale",float) = 1
 		_LightingSteps("Lighting Steps",int) = 4
 		_LightingOffset("Lighting Offset",float) = 0.25
+
+		_RimColor("Rim Color", Color) = (1,1,1,1)
+		_RimAmount("Rim Amount", Range(0,1)) = 0.716
+		_RimThickness("Rim Thickness",float) = 0.01
+		_RimScale("Rim Scale",float) = 0.1
+		_RimThreshold("Rim Threshold",Range(0,1)) = 1
 		
 	}
 	Subshader{
@@ -40,6 +46,12 @@
 			float _LightingScale;
 			int _LightingSteps;
 			float _LightingOffset;
+
+			float4 _RimColor;
+			float _RimAmount;
+			float _RimThickness;
+			float _RimScale;
+			float _RimThreshold;
 
 			struct appdata {
 				float4 vertex: POSITION;
@@ -77,7 +89,12 @@
 				float shadow = SHADOW_ATTENUATION(i); //handles wether or not directional light casts shadows
 				float intensity = lerp(_MinLight, 1, ceil(NdotL * shadow * _LightingScale + _LightingOffset)/_LightingSteps);
 
-				return _Color * sample * (intensity * _LightColor0 + _AmbientColor);
+				//apply rim lighting
+				float4 rimDot = 1 - dot(i.viewDir, normal);
+				float rimIntensity = smoothstep(_RimAmount - _RimThickness, _RimAmount + _RimThickness, rimDot) * _RimScale;
+				//float rimIntensity = rimDot * pow(_RimAmount, _RimThreshold);
+
+				return _Color * sample * (intensity * _LightColor0 + _AmbientColor + rimIntensity * _RimColor);
 			}
 
 			ENDCG
