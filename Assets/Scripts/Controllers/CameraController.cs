@@ -109,10 +109,10 @@ public class CameraController : Possesable {
         //Rotate camera input
         if (Input.GetKeyDown(KeyCode.Q) && rotateScale == 0) { //rotate left around focus
 
-            rotateScale = 1;
+            rotateScale = -1;
         } else if (Input.GetKeyDown(KeyCode.E) && rotateScale == 0) {
 
-            rotateScale = -1;
+            rotateScale = 1;
         }
 
         if (rotateScale != 0) {
