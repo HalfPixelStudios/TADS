@@ -72,7 +72,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RimAmount: 0
-    - _RimScale: 20
+    - _RimScale: 21.24
     - _RimThickness: 0.5
     - _RimThreshold: 0
     - _ShadowScale: 1

@@ -91,10 +91,11 @@
 
 				//apply rim lighting
 				float4 rimDot = 1 - dot(i.viewDir, normal);
-				float rimIntensity = smoothstep(_RimAmount - _RimThickness, _RimAmount + _RimThickness, rimDot) * _RimScale;
+				//float rimIntensity = smoothstep(_RimAmount - _RimThickness, _RimAmount + _RimThickness, rimDot) * _RimScale;
 				//float rimIntensity = rimDot * pow(_RimAmount, _RimThreshold);
+				float rimIntensity = lerp(_MinLight, 1, ceil(rimDot * shadow * _LightingScale + _LightingOffset) / _LightingSteps);
 
-				return _Color * sample * (intensity * _LightColor0 + _AmbientColor + rimIntensity * _RimColor);
+				return _Color * sample * (intensity * _LightColor0 + _AmbientColor);
 			}
 
 			ENDCG
