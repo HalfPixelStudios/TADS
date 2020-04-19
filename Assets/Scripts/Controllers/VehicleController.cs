@@ -13,7 +13,6 @@ public class VehicleController : Possesable
     {
         rb = GetComponent<Rigidbody>();
         _pathAi = GetComponent<PathAI>();
-        _pathAi.setTarget();
 
 
     }
@@ -50,8 +49,9 @@ public class VehicleController : Possesable
         float turn = Input.GetAxis("Horizontal");
         float dir = Input.GetAxis("Vertical");
         
-        rb.angularVelocity=new Vector3(0,turn,0);
-        rb.AddForce(dir*transform.forward*speed);
+        rb.angularVelocity=new Vector3(0,turn*5,0);
+        print(transform.forward);
+        rb.velocity = dir * transform.forward * speed*5;
     }
 
     public override void AnyBehavior() {
