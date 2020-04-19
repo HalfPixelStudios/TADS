@@ -22,7 +22,7 @@ public abstract class Possesable : MonoBehaviour {
     public virtual void AnyBehavior() { }
 
     public virtual void OnPossess() {
-        Global.possesor.SetPossessed(this);
+        
     }
 
 
