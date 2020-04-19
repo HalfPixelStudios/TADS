@@ -1839,12 +1839,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9164057897615905629}
   - component: {fileID: 9164057897608723645}
-  - component: {fileID: 3587633230929129123}
-  - component: {fileID: 7293529665448938721}
-  - component: {fileID: 8483031358683793487}
-  - component: {fileID: 2833589548857700776}
+  - component: {fileID: 7487365481763723523}
   m_Layer: 0
-  m_Name: characterMedium 1
+  m_Name: robber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1885,7 +1882,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3587633230929129123
+--- !u!114 &7487365481763723523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1894,54 +1891,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9164057897616134013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d51867f1807ad48718b104fab8e7dc34, type: 3}
+  m_Script: {fileID: 11500000, guid: d9a542c5167514503afd15ccdb9b80c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPossessed: 0
-  speed: 100
---- !u!114 &7293529665448938721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9164057897616134013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e636a1bfc6814110ace88b5e26f648d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {x: 0, y: 0, z: 0}
-  node: {fileID: 0}
---- !u!54 &8483031358683793487
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9164057897616134013}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
---- !u!65 &2833589548857700776
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9164057897616134013}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 3.7596138, z: 1}
-  m_Center: {x: 0, y: 1.887656, z: 0}
 --- !u!1 &9164057897616134015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,7 +1943,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b06f4b610b7e64733a0dff09d0fbecc3, type: 2}
+  - {fileID: 2100000, guid: 16e6fdb4528584d8880e5dbba4aa3e8f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

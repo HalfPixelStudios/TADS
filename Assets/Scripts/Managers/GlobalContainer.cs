@@ -10,7 +10,8 @@ public class GlobalContainer : MonoBehaviour {
     [HideInInspector] public Possesor possesor;
     public ScreenManager screenManager;
     public Camera captureCam;
-    
+    public GameObject endUI;
+
 
     void Awake() {
         Global = this;
@@ -22,5 +23,17 @@ public class GlobalContainer : MonoBehaviour {
 
     void Update() {
         
+    }
+
+
+    public void dead()
+    {
+        
+        
+    }
+
+    public void win()
+    {
+        Camera.main.GetComponent<CameraController>().zoomTo(100);
     }
 }

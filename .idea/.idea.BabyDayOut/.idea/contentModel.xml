@@ -17,8 +17,12 @@
           <e p="Modular Buildings (100 assets)" t="Include">
             <e p="License.txt" t="Include" />
           </e>
+          <e p="Nature Kit" t="Include">
+            <e p="License.txt" t="Include" />
+          </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="BabyAI.cs" t="Include" />
           <e p="Controllers" t="Include">
             <e p="CameraController.cs" t="Include" />
             <e p="PedestrianController.cs" t="Include" />
