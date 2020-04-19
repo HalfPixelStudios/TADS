@@ -8,7 +8,6 @@ public class CameraController : Possesable {
 
     [Range(0f,5f)] public float panSpeed;
     [Range(0f, 200f)] public float rotateSpeed;
-    [Range(0f, 10f)] public float zoom;
 
     Camera cam;
 
@@ -23,10 +22,11 @@ public class CameraController : Possesable {
         cam = GetComponentInChildren<Camera>();
     }
 
+
     private void OnValidate() {
         //cam.orthographicSize = zoom;
     }
-
+    
     public override void PossessedBehavior() {
         //Defualt RTS camera controls
 
@@ -84,6 +84,7 @@ public class CameraController : Possesable {
         }
 
         //possess key
+
         if (Input.GetKeyDown(KeyCode.Space) && focus != null) { //we can only possess something if we are focused on it
             Assert.IsNotNull(focus.gameObject.GetComponent<Possesable>());
 
@@ -95,6 +96,7 @@ public class CameraController : Possesable {
 
 
         //Unpossess key (when not possessing camera)
+
         if (Input.GetKeyDown(KeyCode.Space) && Global.possesor.possesing != null) { //when we unpossess anything we default back to posessing the camera
             Global.possesor.SetPossessed(this);
             focus = null;
