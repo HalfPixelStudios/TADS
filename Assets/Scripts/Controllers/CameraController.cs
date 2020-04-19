@@ -11,7 +11,7 @@ public class CameraController : Possesable {
 
     Camera cam;
 
-    Transform focus;
+    Transform focus = null;
 
     //Camera Rotation
     float target_angle = 0;
@@ -45,16 +45,36 @@ public class CameraController : Possesable {
         if (Input.GetMouseButtonDown(0)) {
 
             //first find position on output screen and map it to capture cam
-            Debug.Log(Global.screenManager.GetScreenClick());
-
+            //Debug.Log(Global.screenManager.GetScreenClick());
+            Vector2 clickPos = Global.screenManager.GetScreenClick();
+            Vector3 origin = cam.transform.position;
+            origin += cam.transform.up * clickPos.y;
+            origin += cam.transform.right * clickPos.x;
 
             //ray cast and take the first possessable object we hit
 
+            Ray ray = new Ray(origin,cam.transform.forward);
+            Debug.DrawRay(origin, cam.transform.forward*100,Color.red,2);
+
+            RaycastHit[] hits = Physics.RaycastAll(ray);
+            Possesable p = null;
+            if (hits.Length > 0) {
+                for (int i = 0; i < hits.Length; i++) {
+                    RaycastHit hit = hits[i];
+                    p = hit.transform.gameObject.GetComponent<Possesable>();
+                    if (p != null) { //grab first object that is possessable
+                        Debug.Log("HIT!");
+                        break;
+                    }
+                }
+            }
             
-            //set it as our focus
-
-
-            //if we dont hit anything we unfocus our focus
+            //if possessable is not null, that means we hit something
+            if (p != null) { //set it as our focus
+                focus = p.transform;
+            } else { //if we dont hit anything we unfocus our focus
+                focus = null;
+            }
 
         }
 
@@ -68,16 +88,11 @@ public class CameraController : Possesable {
 
     public override void DefaultBehavior() {
 
-        if (focus == null) { return; }
 
-        //Camera will now automatically follow what ever object is focused
-
-        Vector3 pos = transform.position;
-        Vector3 target = focus.position;
-        float newX = Mathf.Lerp(transform.position.x, target.x, Time.deltaTime*panSpeed);
-        float newY = Mathf.Lerp(transform.position.y, target.y, Time.deltaTime * panSpeed);
-        float newZ = Mathf.Lerp(transform.position.z, target.z, Time.deltaTime * panSpeed);
-        transform.position = new Vector3(newX, newY, newZ);
+        //Unpossess key (when not possessing camera)
+        if (Input.GetKeyDown(KeyCode.E) && Global.possesor.possesable != null) { //when we unpossess anything we default back to posessing the camera
+            Global.possesor.SetPossessed(this);
+        }
     }
 
     public override void AnyBehavior() {
@@ -103,15 +118,21 @@ public class CameraController : Possesable {
         }
 
         
-
         //Camera always looks at focus
         cam.transform.LookAt(cam.transform.parent);
 
 
-        //Unpossess key
-        if (Input.GetKeyDown(KeyCode.E) && Global.possesor.possesable != null) { //when we unpossess anything we default back to posessing the camera
-            Global.possesor.SetPossessed(this);
-        }
+
+        //Camera will now automatically follow what ever object is focused
+        if (focus == null) { return; }
+
+        Vector3 pos = transform.position;
+        Vector3 target = focus.position;
+        float newX = Mathf.Lerp(transform.position.x, target.x, Time.deltaTime * panSpeed);
+        float newY = Mathf.Lerp(transform.position.y, target.y, Time.deltaTime * panSpeed);
+        float newZ = Mathf.Lerp(transform.position.z, target.z, Time.deltaTime * panSpeed);
+        transform.position = new Vector3(newX, newY, newZ);
+
     }
 
     public void SetFocus(Transform focus) {

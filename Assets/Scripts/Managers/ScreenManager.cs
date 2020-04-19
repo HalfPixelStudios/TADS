@@ -50,8 +50,8 @@ public class ScreenManager : MonoBehaviour {
         }
 
         //make click position start at the bottom left corner
-        float screenX = hitPosition.x + transform.localScale.x / 2f * 10 - transform.position.x;
-        float screenY = hitPosition.y + transform.localScale.y / 2f * 10 - transform.position.y;
+        float screenX = hitPosition.x - transform.position.x;
+        float screenY = hitPosition.y - transform.position.y;
 
         Vector2 clickPosition = new Vector2(screenX,screenY);
 
