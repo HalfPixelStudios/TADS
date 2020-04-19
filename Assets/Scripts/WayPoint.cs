@@ -26,6 +26,7 @@ public class WayPoint : MonoBehaviour
 
     public virtual void setNextNode(PathAI pathAi)
     {
+        var c = connections.FindAll(node => !node.Equals(pathAi.node));;
         pathAi.node=connections[Random.Range(0, connections.Count)];
         pathAi.setTarget();
     }

@@ -19,7 +19,7 @@ public class TrafficControllerEditor
         }
 
         float radius = 0;
-        Gizmos.DrawSphere(wayPoint.transform.position,5);
+        Gizmos.DrawSphere(wayPoint.transform.position,0.8f);
         Gizmos.color=Color.blue;
     }
 }
