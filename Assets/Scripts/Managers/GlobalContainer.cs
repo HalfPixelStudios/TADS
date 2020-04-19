@@ -34,6 +34,6 @@ public class GlobalContainer : MonoBehaviour {
 
     public void win()
     {
-        Camera.main.GetComponent<CameraController>().zoomTo(100);
+        //Camera.main.GetComponent<CameraController>().zoomTo(100);
     }
 }

@@ -8,6 +8,7 @@ using static GlobalContainer;
 public class ScreenManager : MonoBehaviour {
 
     public int pixelsPerUnit;
+    public float zoom;
 
 
     //resizes capture cam / output cam so it fits screen size
@@ -15,15 +16,17 @@ public class ScreenManager : MonoBehaviour {
     void Start() {
 
         //Set size of main cam
+        Camera.main.orthographicSize /= zoom;
+
         float screenHeight = 2 * Camera.main.orthographicSize;
         float screenWidth = screenHeight * Camera.main.aspect;
 
         //Set size of capture cam
-        //Global.captureCam.orthographicSize = Camera.main.orthographicSize;
+        Global.captureCam.orthographicSize = Camera.main.orthographicSize;
 
 
         //Set size of render texture
-        RenderTexture tex = new RenderTexture((int)screenWidth * pixelsPerUnit, (int)screenHeight * pixelsPerUnit, 24);
+        RenderTexture tex = new RenderTexture((int)(screenWidth * pixelsPerUnit * zoom), (int)(screenHeight * pixelsPerUnit * zoom), 24);
         tex.wrapMode = TextureWrapMode.Clamp;
         tex.filterMode = FilterMode.Point;
         Global.captureCam.targetTexture = tex;
