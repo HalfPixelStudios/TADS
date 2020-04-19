@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CelWalkStripes
+  m_Name: CelShaded
   m_Shader: {fileID: 4800000, guid: f5811d69e6ec96b46a83bd8e4af8beb0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
