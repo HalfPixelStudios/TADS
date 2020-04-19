@@ -7,6 +7,7 @@ public class PathAI : MonoBehaviour
     public Vector3 target;
 
     public WayPoint node;
+    public WayPoint prevNode;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,9 @@ public class PathAI : MonoBehaviour
     //called by controller
     public void setNextNode()
     {
+        
         node.setNextNode(this);
+        
     }
 
     

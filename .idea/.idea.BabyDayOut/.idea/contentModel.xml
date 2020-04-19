@@ -24,6 +24,9 @@
             <e p="License.txt" t="Include" />
           </e>
         </e>
+        <e p="Resources" t="Include">
+          <e p="DepthMask.shader" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="BabyAI.cs" t="Include" />
           <e p="Controllers" t="Include">
