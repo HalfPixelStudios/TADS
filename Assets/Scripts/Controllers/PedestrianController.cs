@@ -26,7 +26,7 @@ public class PedestrianController : Possesable
             var angles = transform.rotation.eulerAngles;
             transform.rotation=Quaternion.Euler(0,angles.y,0);
             
-            rb.velocity = transform.forward * speed;
+            transform.position+= transform.forward * speed;
             
         }
         else
@@ -54,8 +54,8 @@ public class PedestrianController : Possesable
             anim.SetBool("moving",true);
         }
         
-        rb.angularVelocity=new Vector3(0,turn*5,0);
-        rb.velocity = dir * transform.forward * speed;
+        rb.angularVelocity=new Vector3(0,turn*20,0);
+        transform.position+= dir * transform.forward * speed;
         print(rb.velocity);
 
     }
