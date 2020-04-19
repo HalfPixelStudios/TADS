@@ -97,6 +97,7 @@ public class CameraController : Possesable {
         //Unpossess key (when not possessing camera)
         if (Input.GetKeyDown(KeyCode.Space) && Global.possesor.possesing != null) { //when we unpossess anything we default back to posessing the camera
             Global.possesor.SetPossessed(this);
+            focus = null;
         }
     }
 
