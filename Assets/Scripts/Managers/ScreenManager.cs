@@ -19,7 +19,7 @@ public class ScreenManager : MonoBehaviour {
         float screenWidth = screenHeight * Camera.main.aspect;
 
         //Set size of capture cam
-        Global.captureCam.orthographicSize = Camera.main.orthographicSize;
+        //Global.captureCam.orthographicSize = Camera.main.orthographicSize;
 
 
         //Set size of render texture
