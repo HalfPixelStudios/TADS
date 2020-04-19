@@ -13,6 +13,8 @@
 		_RimColor("Rim Color", Color) = (1,1,1,1)
 		_RimAmount("Rim Amount", Range(0,1)) = 0.716
 		_RimThickness("Rim Thickness",float) = 0.01
+		_RimScale("Rim Scale",float) = 0.1
+		_RimThreshold("Rim Threshold",Range(0,1)) = 1
 		
 	}
 	Subshader{
@@ -48,6 +50,8 @@
 			float4 _RimColor;
 			float _RimAmount;
 			float _RimThickness;
+			float _RimScale;
+			float _RimThreshold;
 
 			struct appdata {
 				float4 vertex: POSITION;
@@ -87,8 +91,8 @@
 
 				//apply rim lighting
 				float4 rimDot = 1 - dot(i.viewDir, normal);
-				float rimIntensity = smoothstep(_RimAmount - _RimThickness, _RimAmount + _RimThickness, rimDot);
-
+				float rimIntensity = smoothstep(_RimAmount - _RimThickness, _RimAmount + _RimThickness, rimDot) * _RimScale;
+				//float rimIntensity = rimDot * pow(_RimAmount, _RimThreshold);
 
 				return _Color * sample * (intensity * _LightColor0 + _AmbientColor + rimIntensity * _RimColor);
 			}
