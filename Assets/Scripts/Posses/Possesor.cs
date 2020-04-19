@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class Possesor : MonoBehaviour {
 
-    public Possesable possesable;
+    public Possesable possesing;
 
     private void Awake() {
         //start off by possessing the camera
-        SetPossessed((Possesable)FindObjectOfType(typeof(CameraController)));
+        SetPossessed((Possesable)FindObjectOfType<CameraController>());
     }
 
     public void SetPossessed(Possesable target) {
-        if (possesable != null) {
-            possesable.isPossessed = false;
+        if (possesing != null) {
+            possesing.isPossessed = false;
         }
         target.isPossessed = true;
+        possesing = target;
     }
 
     /*
