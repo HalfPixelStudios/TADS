@@ -30,9 +30,11 @@
         <e p="Scripts" t="Include">
           <e p="BabyAI.cs" t="Include" />
           <e p="Controllers" t="Include">
+            <e p="BabyController.cs" t="Include" />
             <e p="CameraController.cs" t="Include" />
             <e p="PedestrianController.cs" t="Include" />
             <e p="RobberController.cs" t="Include" />
+            <e p="ShipController.cs" t="Include" />
             <e p="TestController.cs" t="Include" />
             <e p="VehicleController.cs" t="Include" />
           </e>
@@ -61,6 +63,7 @@
             <e p="SoundPlayer.cs" t="Include" />
           </e>
           <e p="TrafficLightPoint.cs" t="Include" />
+          <e p="UISys.cs" t="Include" />
           <e p="WayPoint.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">

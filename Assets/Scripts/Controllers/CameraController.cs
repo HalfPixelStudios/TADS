@@ -84,6 +84,11 @@ public class CameraController : Possesable {
 
         }
 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            focus = Global.baby.transform;
+        }
+
         //possess key
 
         if (Input.GetKeyDown(KeyCode.Space) && focus != null) { //we can only possess something if we are focused on it

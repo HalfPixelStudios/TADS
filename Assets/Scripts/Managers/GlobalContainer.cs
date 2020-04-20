@@ -11,6 +11,7 @@ public class GlobalContainer : MonoBehaviour {
     public ScreenManager screenManager;
     public Camera captureCam;
     public GameObject endUI;
+    public GameObject baby;
 
 
     void Awake() {
