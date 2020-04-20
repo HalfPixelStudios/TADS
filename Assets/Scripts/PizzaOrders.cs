@@ -26,7 +26,6 @@ public class PizzaOrders : MonoBehaviour
     {
         if (Vector3.Distance(target, transform.position) < 2)
         {
-            Instantiate(GlobalContainer.Global.pizza, target, Quaternion.identity);
             index += 1;
             if (index > destinations.Count)
             {

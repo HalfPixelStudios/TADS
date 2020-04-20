@@ -59,7 +59,6 @@
           <e p="Sound" t="Include">
             <e p="SoundPlayer.cs" t="Include" />
           </e>
-          <e p="Spawner.cs" t="Include" />
           <e p="TrafficLightPoint.cs" t="Include" />
           <e p="UISys.cs" t="Include" />
           <e p="WayPoint.cs" t="Include" />

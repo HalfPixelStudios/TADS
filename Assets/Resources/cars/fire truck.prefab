@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7273985333567713406}
-  - component: {fileID: 5377874704473993822}
   - component: {fileID: 7990378991757518106}
   - component: {fileID: 3762408327615366258}
   - component: {fileID: 7498709961944160098}
+  - component: {fileID: 8933775640607450892}
   m_Layer: 0
   m_Name: fire truck
   m_TagString: Untagged
@@ -35,22 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &5377874704473993822
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 594927769705044670}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &7990378991757518106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62,7 +46,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.51705694, y: 0.6517465, z: 1.215065}
+  m_Size: {x: -0.44, y: 0.6517465, z: 1.15}
   m_Center: {x: 0.000024139881, y: 0.32592976, z: -0.017878532}
 --- !u!114 &3762408327615366258
 MonoBehaviour:
@@ -77,14 +61,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPossessed: 0
-  speed: 2
-  turnSpeed: 90
-  accel: 0.1
-  brake: 0.06
+  turnSpeed: 95
+  accel: 0.06
+  brake: 0.04
   decay: 0.03
-  maxFwdSpeed: 3
-  maxBkdSpeed: 1.5
-  aiTurnThreshold: 0
+  maxFwdSpeed: 4.2
+  maxBkdSpeed: 2
+  aiTurnThreshold: 3
   stoppingDistance: 0.1
 --- !u!114 &7498709961944160098
 MonoBehaviour:
@@ -101,6 +84,22 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   node: {fileID: 0}
   prevNode: {fileID: 0}
+--- !u!54 &8933775640607450892
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594927769705044670}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &148590675740312682
 PrefabInstance:
   m_ObjectHideFlags: 0

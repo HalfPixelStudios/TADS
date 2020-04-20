@@ -21,6 +21,7 @@ public class GlobalContainer : MonoBehaviour {
     [SerializeField] public GameObject pizza;
 
 
+
     void Awake() {
         Global = this;
         inputManager = GetComponent<InputManager>();

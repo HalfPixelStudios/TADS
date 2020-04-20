@@ -7,9 +7,11 @@ using static GlobalContainer;
 public class CameraController : Possesable {
 
     [Range(0f,5f)] public float panSpeed;
-    [Range(0f, 200f)] public float rotateSpeed;
+    [Range(0f, 5f)] public float followSpeed;
+    [Range(0f, 400f)] public float rotateSpeed;
 
     Camera cam;
+    Rigidbody rb;
 
     Transform focus = null;
 
@@ -20,6 +22,7 @@ public class CameraController : Possesable {
 
     void Awake() {
         cam = GetComponentInChildren<Camera>();
+        rb = GetComponent<Rigidbody>();
         //zoom = cam.orthographicSize;
     }
 
@@ -78,8 +81,12 @@ public class CameraController : Possesable {
             //if possessable is not null, that means we hit something
             if (p != null) { //set it as our focus
                 focus = p.transform;
+
+                SoundPlayer.quickStart("Sounds/camFocus");
             } else { //if we dont hit anything we unfocus our focus
                 focus = null;
+
+                SoundPlayer.quickStart("Sounds/camUnfocus");
             }
 
         }
@@ -95,6 +102,8 @@ public class CameraController : Possesable {
             Assert.IsNotNull(focus.gameObject.GetComponent<Possesable>());
 
             Global.possesor.SetPossessed(focus.gameObject.GetComponent<Possesable>());
+
+            SoundPlayer.quickStart("Sounds/possess2",0.2f);
         }
     }
 
@@ -106,17 +115,22 @@ public class CameraController : Possesable {
         if (Input.GetKeyDown(KeyCode.Space) && Global.possesor.possesing != null) { //when we unpossess anything we default back to posessing the camera
             Global.possesor.SetPossessed(this);
             focus = null;
+
+            SoundPlayer.quickStart("Sounds/unpossess");
         }
     }
 
     public override void AnyBehavior() {
         //Rotate camera input
         if (Input.GetKeyDown(KeyCode.Q) && rotateScale == 0) { //rotate left around focus
-
             rotateScale = -1;
-        } else if (Input.GetKeyDown(KeyCode.E) && rotateScale == 0) {
 
+            SoundPlayer.quickStart("Sounds/camRotate");
+
+        } else if (Input.GetKeyDown(KeyCode.E) && rotateScale == 0) {
             rotateScale = +1;
+
+            SoundPlayer.quickStart("Sounds/camRotate");
         }
 
         if (rotateScale != 0) {
@@ -142,12 +156,14 @@ public class CameraController : Possesable {
 
         Vector3 pos = transform.position;
         Vector3 target = focus.position;
-        float newX = Mathf.Lerp(transform.position.x, target.x, Time.deltaTime * panSpeed);
-        float newY = Mathf.Lerp(transform.position.y, target.y, Time.deltaTime * panSpeed);
-        float newZ = Mathf.Lerp(transform.position.z, target.z, Time.deltaTime * panSpeed);
+        float newX = Mathf.Lerp(transform.position.x, target.x, Time.deltaTime * followSpeed);
+        float newY = Mathf.Lerp(transform.position.y, target.y, Time.deltaTime * followSpeed);
+        float newZ = Mathf.Lerp(transform.position.z, target.z, Time.deltaTime * followSpeed);
+        newY = 0;
         transform.position = new Vector3(newX, newY, newZ);
         //cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, zoom,0.7f);
 
+        rb.velocity = Vector3.zero;
     }
 
     public void SetFocus(Transform focus) {

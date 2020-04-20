@@ -45,11 +45,7 @@ public class PedestrianController : Possesable
         {
             anim.SetBool("moving",false);
         }
-        
-        
-        
-        
-        
+
         
     }
 
@@ -74,23 +70,14 @@ public class PedestrianController : Possesable
         //Animation stuff
         anim.SetBool("moving", inp != Vector2.zero);
 
+    }
 
-        /*
-        if (dir == 0)
-        {
-            anim.SetBool("moving",false);
-            
-        }
-        else
-        {
-            anim.SetBool("moving",true);
-        }
-        
-        rb.angularVelocity=new Vector3(0,turn*20,0);
-        transform.position+= dir * transform.forward * speed;
-        print(rb.velocity);
-        */
-
+    private void playFootStep() {
+        Debug.Log("STEP");
+        if (!isPossessed) { return; } //only play footstep sounds when the player is controlling
+        //
+        AudioClip[] clips = Resources.LoadAll<AudioClip>("Sounds/Footsteps");
+        SoundPlayer.quickStart(clips[Random.Range(0,clips.Length)],0.1f);
     }
     
 }

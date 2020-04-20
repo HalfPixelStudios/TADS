@@ -11,7 +11,6 @@ public class VehicleController : Possesable
     private Rigidbody rb;
 
     //public 
-    public float speed;
     public float turnSpeed;
     public float accel; //acceleration/brake increment
     public float brake;
