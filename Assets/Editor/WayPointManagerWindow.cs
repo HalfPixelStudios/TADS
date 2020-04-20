@@ -57,6 +57,23 @@ public class WayPointManagerWindow : EditorWindow
             wp.transform.SetParent(wayPointRoot,false);
             Selection.activeGameObject = wp;
 
+        }else if (GUILayout.Button("Create Point In Between"))
+        {
+            GameObject wp = new GameObject("Way Point ("+wayPointRoot.childCount+")",typeof(WayPoint));
+            
+            wp.transform.SetParent(wayPointRoot,false);
+            wp.transform.position = (wayPoint1.transform.position + wayPoint2.transform.position) / 2;
+            wayPoint1.GetComponent<WayPoint>().connections.Remove(wayPoint2.GetComponent<WayPoint>());
+            wayPoint2.GetComponent<WayPoint>().connections.Remove(wayPoint1.GetComponent<WayPoint>());
+            
+            wayPoint1.GetComponent<WayPoint>().connections.Add(wp.GetComponent<WayPoint>());
+            wayPoint2.GetComponent<WayPoint>().connections.Add(wp.GetComponent<WayPoint>());
+            wp.GetComponent<WayPoint>().connections.Add(wayPoint1.GetComponent<WayPoint>());
+            wp.GetComponent<WayPoint>().connections.Add(wayPoint2.GetComponent<WayPoint>());
+            
+            
+            
+
         }
         
         

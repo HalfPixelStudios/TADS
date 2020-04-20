@@ -333,6 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
   node: {fileID: 0}
+  prevNode: {fileID: 0}
 --- !u!54 &2483588086399097123
 Rigidbody:
   m_ObjectHideFlags: 0
