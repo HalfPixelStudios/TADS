@@ -30,6 +30,10 @@ public class BabyAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (other.collider.attachedRigidbody == null)
+        {
+            return;
+        }
         if (other.collider.attachedRigidbody.velocity.magnitude > 1)
         {
             Destroy(this);
