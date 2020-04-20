@@ -8,7 +8,7 @@ public class PedestrianController : Possesable
 {
     private PathAI _pathAi;
     private Rigidbody rb;
-    [SerializeField]private float speed;
+    public float speed;
     private Animator anim;
     public float stoppingDistance;
 

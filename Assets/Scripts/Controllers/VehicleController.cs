@@ -132,7 +132,7 @@ public class VehicleController : Possesable
         curVelo = Mathf.Clamp(curVelo, -maxBkdSpeed, maxFwdSpeed);
 
         //move car
-        transform.position += curVelo * Time.deltaTime * Vector3.ProjectOnPlane(transform.forward,Vector3.up);
+        transform.position += curVelo * Time.deltaTime * Vector3.ProjectOnPlane(transform.forward, Vector3.up);
     }
 
 }
