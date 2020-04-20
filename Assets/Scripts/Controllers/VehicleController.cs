@@ -18,6 +18,10 @@ public class VehicleController : Possesable
     public float decay; //slow down due to friction
     public float maxFwdSpeed;
     public float maxBkdSpeed;
+
+    public float aiTurnThreshold; //the largest angle offset before ai will start turning
+
+
     public float stoppingDistance;
 
     private float curVelo;
@@ -54,9 +58,9 @@ public class VehicleController : Possesable
             //steer towards next node
             float angle = Vector3.SignedAngle(_pathAi.target-transform.position,transform.forward,Vector3.up); //find direction to steer in
             
-            if (angle > 0) {
+            if (angle > aiTurnThreshold) {
                 inp.x = -1;
-            } else if (angle < 0) {
+            } else if (angle < -aiTurnThreshold) {
                 inp.x = 1;
             }
             driverInput = inp;
@@ -130,7 +134,7 @@ public class VehicleController : Possesable
         curVelo = Mathf.Clamp(curVelo, -maxBkdSpeed, maxFwdSpeed);
 
         //move car
-        rb.velocity = curVelo * transform.forward;
+        transform.position += curVelo * Time.deltaTime * Vector3.ProjectOnPlane(transform.forward,Vector3.up);
     }
 
 }
