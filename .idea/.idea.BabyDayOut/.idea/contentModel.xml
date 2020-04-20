@@ -36,6 +36,7 @@
             <e p="TestController.cs" t="Include" />
             <e p="VehicleController.cs" t="Include" />
           </e>
+          <e p="CursorBob.cs" t="Include" />
           <e p="FSM" t="Include">
             <e p="TrafficFSM.cs" t="Include" />
           </e>
@@ -44,6 +45,7 @@
             <e p="SelectableObject.cs" t="Include" />
           </e>
           <e p="LightController.cs" t="Include" />
+          <e p="MainMenu.cs" t="Include" />
           <e p="Managers" t="Include">
             <e p="GlobalContainer.cs" t="Include" />
             <e p="InputManager.cs" t="Include" />
