@@ -17,6 +17,7 @@ public class GlobalContainer : MonoBehaviour {
     public float timer;
     public float timeLimit;
     private Slider _slider;
+    [SerializeField] public GameObject pizza;
 
 
     void Awake() {
