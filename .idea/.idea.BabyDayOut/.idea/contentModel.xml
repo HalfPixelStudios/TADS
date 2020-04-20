@@ -57,6 +57,9 @@
             <e p="Possesor.cs" t="Include" />
           </e>
           <e p="RotateLmao.cs" t="Include" />
+          <e p="Sound" t="Include">
+            <e p="SoundPlayer.cs" t="Include" />
+          </e>
           <e p="TrafficLightPoint.cs" t="Include" />
           <e p="WayPoint.cs" t="Include" />
         </e>
