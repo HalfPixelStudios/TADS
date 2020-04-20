@@ -4812,6 +4812,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Baby
       objectReference: {fileID: 0}
+    - target: {fileID: 2946467124369481233, guid: 4fbf6ba298ffc49ba9fdaa66c201f752,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2946467124369900081, guid: 4fbf6ba298ffc49ba9fdaa66c201f752,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17822,6 +17827,7 @@ MonoBehaviour:
   captureCam: {fileID: 0}
   endUI: {fileID: 0}
   baby: {fileID: 374277425}
+  fire: {fileID: 83567792302609030, guid: fd9b0fac7fef04579859ff91f64e413e, type: 3}
 --- !u!114 &1564213930
 MonoBehaviour:
   m_ObjectHideFlags: 0

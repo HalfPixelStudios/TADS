@@ -29,6 +29,7 @@ public class RobberController : PedestrianController {
             } else { //if we didnt hit, set gun shot to max range
                 final = transform.position + facing.normalized * gunMaxRange;  
             }
+            
 
             Debug.DrawLine(transform.position,final,Color.yellow,3);
         }
