@@ -62,8 +62,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1326461, y: 0.49353242, z: 0.46941495}
-  m_Center: {x: -0.0060293674, y: 0.2532338, z: -0.00000011920929}
+  m_Size: {x: 0.43105102, y: 0.47401652, z: 1.017266}
+  m_Center: {x: -0.0060293376, y: 0.24347584, z: -0.00000023841858}
 --- !u!114 &5833867630934404579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   decay: 0.03
   maxFwdSpeed: 3
   maxBkdSpeed: 1.5
+  aiTurnThreshold: 0
   stoppingDistance: 0.1
 --- !u!1001 &1271765518656262266
 PrefabInstance:

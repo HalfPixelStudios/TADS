@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(InputManager),typeof(Possesor))]
 public class GlobalContainer : MonoBehaviour {
@@ -13,6 +14,9 @@ public class GlobalContainer : MonoBehaviour {
     public GameObject endUI;
     public GameObject baby;
     public ParticleSystem fire;
+    public float timer;
+    public float timeLimit;
+    private Slider _slider;
 
 
     void Awake() {
@@ -23,8 +27,15 @@ public class GlobalContainer : MonoBehaviour {
         captureCam = FindObjectOfType<CameraController>().GetComponentInChildren<Camera>();
     }
 
-    void Update() {
-        
+    void Update()
+    {
+        timer += Time.deltaTime;
+        _slider.value = timer / timeLimit;
+        if (timer > timeLimit)
+        {
+            dead();
+        }
+
     }
 
 
