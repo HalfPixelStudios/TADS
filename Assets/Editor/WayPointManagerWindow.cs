@@ -70,12 +70,12 @@ public class WayPointManagerWindow : EditorWindow
             wayPoint2.GetComponent<WayPoint>().connections.Add(wp.GetComponent<WayPoint>());
             wp.GetComponent<WayPoint>().connections.Add(wayPoint1.GetComponent<WayPoint>());
             wp.GetComponent<WayPoint>().connections.Add(wayPoint2.GetComponent<WayPoint>());
-            
-            
-            
-
         }
-        
+        else if (GUILayout.Button("Break Connection"))
+        {
+            wayPoint1.GetComponent<WayPoint>().connections.Remove(wayPoint2.GetComponent<WayPoint>());
+            wayPoint2.GetComponent<WayPoint>().connections.Remove(wayPoint1.GetComponent<WayPoint>());
+        }
         
     }
     
