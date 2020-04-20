@@ -86,12 +86,11 @@ public class VehicleController : Possesable
             fire.Play();
             if (isPossessed)
             {
-                Global.possesor.SetPossessed(Camera.main.GetComponent<Possesable>());
+                Global.possesor.SetPossessed(Global.captureCam.transform.parent.GetComponent<Possesable>());
             }
             Destroy(this);
             Destroy(_pathAi);
         }
-        
     }
 
     

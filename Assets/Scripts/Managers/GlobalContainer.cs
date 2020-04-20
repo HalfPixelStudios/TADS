@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(InputManager),typeof(Possesor))]
@@ -16,7 +17,7 @@ public class GlobalContainer : MonoBehaviour {
     public ParticleSystem fire;
     public float timer;
     public float timeLimit;
-    private Slider _slider;
+    private Text t;
     [SerializeField] public GameObject pizza;
 
 
@@ -31,7 +32,7 @@ public class GlobalContainer : MonoBehaviour {
     void Update()
     {
         timer += Time.deltaTime;
-        _slider.value = timer / timeLimit;
+         t.text= timeLimit-timer;
         if (timer > timeLimit)
         {
             dead();

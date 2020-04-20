@@ -28,7 +28,7 @@ public class WayPoint : MonoBehaviour
     {
         var c = connections;
         
-        if (pathAi.prevNode != null)
+        if (pathAi.prevNode != null&&c.Count>1)
         {
             print(pathAi.prevNode);
             c = connections.FindAll(node => node.transform.position!=pathAi.prevNode.transform.position);
