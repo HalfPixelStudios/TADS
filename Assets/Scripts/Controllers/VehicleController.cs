@@ -43,7 +43,7 @@ public class VehicleController : Possesable
             transform.LookAt(_pathAi.target);
             var angles = transform.rotation.eulerAngles;
             transform.rotation=Quaternion.Euler(0,angles.y,0);
-            rb.velocity = transform.forward * speed;
+            rb.velocity = transform.forward * speed * Time.deltaTime;
             
 
         }
