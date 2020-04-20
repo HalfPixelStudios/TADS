@@ -11,6 +11,8 @@ public class PedestrianController : Possesable
     [SerializeField]private float speed;
     private Animator anim;
 
+    protected Vector3 facing = new Vector3(1,0,1);
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -53,7 +55,8 @@ public class PedestrianController : Possesable
         transform.position += move;
 
         if (inp != Vector2.zero) { //facing in direction of movement
-            transform.rotation = Quaternion.LookRotation(move); //look in direction cam is facing
+            facing = move;
+            transform.rotation = Quaternion.LookRotation(facing); //look in direction cam is facing
         }
 
         
