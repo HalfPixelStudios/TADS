@@ -21,6 +21,8 @@ public class VehicleController : Possesable
     public float stoppingDistance;
 
     private float curVelo;
+
+    Vector2 driverInput;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -38,17 +40,32 @@ public class VehicleController : Possesable
         }
         if (_pathAi.target != Vector3.zero)
         {
-            
+
+            /*
             transform.LookAt(_pathAi.target);
             var angles = transform.rotation.eulerAngles;
             transform.rotation=Quaternion.Euler(0,angles.y,0);
-            rb.velocity = transform.forward * speed;
+            */
+
+            //rb.velocity = transform.forward * speed;
+            Vector2 inp = new Vector2(0,1); //step on gas for now
+            //curVelo += accel; //step on da gas (TODO: add braking and stuff later)
+
+            //steer towards next node
+            float angle = Vector3.SignedAngle(_pathAi.target-transform.position,transform.forward,Vector3.up); //find direction to steer in
+            
+            if (angle > 0) {
+                inp.x = -1;
+            } else if (angle < 0) {
+                inp.x = 1;
+            }
+            driverInput = inp;
             
 
         }
         else
         {
-            rb.velocity=Vector3.zero;
+            //rb.velocity=Vector3.zero;
         }
         
         
@@ -77,29 +94,11 @@ public class VehicleController : Possesable
 
     public override void PossessedBehavior() {
 
-        Vector2 inp = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        driverInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        //forward movement
-        if (inp.y > 0) { curVelo += accel; }
-        else if (inp.y < 0) { curVelo -= brake; }
 
-        if (curVelo != 0) {
-            curVelo -= (curVelo / Mathf.Abs(curVelo) * decay); //apply 'friction' in the opposite direction of motion
-        }
 
-        curVelo = Mathf.Clamp(curVelo, -maxBkdSpeed, maxFwdSpeed);
 
-        //turning
-        float turnScale = 0; //you can only turn better at higher speeds
-        if (curVelo > 0) {
-            turnScale = curVelo / maxFwdSpeed;
-        } else if (curVelo < 0) {
-            turnScale = -curVelo / maxBkdSpeed;
-        }
-        transform.Rotate(Vector3.up,turnSpeed*inp.x*Time.deltaTime*turnScale);
-
-        //move car
-        rb.velocity=curVelo * transform.forward;
 
 
         /*        
@@ -109,7 +108,29 @@ public class VehicleController : Possesable
         */
     }
 
+
     public override void AnyBehavior() {
-        
+
+        //forward movement
+        if (driverInput.y > 0) { curVelo += accel; } else if (driverInput.y < 0) { curVelo -= brake; }
+
+        //turning
+        float turnScale = 0; //you can only turn better at higher speeds
+        if (curVelo > 0) {
+            turnScale = curVelo / maxFwdSpeed;
+        } else if (curVelo < 0) {
+            turnScale = -curVelo / maxBkdSpeed;
+        }
+        transform.Rotate(Vector3.up, turnSpeed * driverInput.x * Time.deltaTime * turnScale);
+
+        if (curVelo != 0) {
+            curVelo -= (curVelo / Mathf.Abs(curVelo) * decay); //apply 'friction' in the opposite direction of motion
+        }
+
+        curVelo = Mathf.Clamp(curVelo, -maxBkdSpeed, maxFwdSpeed);
+
+        //move car
+        rb.velocity = curVelo * transform.forward;
     }
+
 }
