@@ -14,7 +14,8 @@ public class VehicleController : Possesable
     public float accel; //acceleration/brake increment
     public float brake;
     public float decay; //slow down due to friction
-    public float maxSpeed;
+    public float maxFwdSpeed;
+    public float maxBkdSpeed;
 
     public float stoppingDistance;
 
@@ -65,10 +66,16 @@ public class VehicleController : Possesable
             curVelo -= (curVelo / Mathf.Abs(curVelo) * decay); //apply 'friction' in the opposite direction of motion
         }
 
-        curVelo = Mathf.Clamp(curVelo, -maxSpeed, maxSpeed);
+        curVelo = Mathf.Clamp(curVelo, -maxBkdSpeed, maxFwdSpeed);
 
         //turning
-        transform.Rotate(Vector3.up,turnSpeed*inp.x*Time.deltaTime);
+        float turnScale = 0; //you can only turn better at higher speeds
+        if (curVelo > 0) {
+            turnScale = curVelo / maxFwdSpeed;
+        } else if (curVelo < 0) {
+            turnScale = -curVelo / maxBkdSpeed;
+        }
+        transform.Rotate(Vector3.up,turnSpeed*inp.x*Time.deltaTime*turnScale);
 
         //move car
         transform.position += curVelo * transform.forward * Time.deltaTime;
