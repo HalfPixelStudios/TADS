@@ -17,6 +17,6 @@ public class CursorBob : MonoBehaviour {
         //Bob up and down
         Vector3 pos = following.position;
         float y = Mathf.Sin(Time.time*bobSpeed)*bobAmplitude;
-        transform.position = new Vector3(pos.x+parentOffset.x, y+parentOffset.y, pos.z+parentOffset.z);
+        transform.position = new Vector3(pos.x+parentOffset.x, pos.y+y+parentOffset.y, pos.z+parentOffset.z);
     }
 }
