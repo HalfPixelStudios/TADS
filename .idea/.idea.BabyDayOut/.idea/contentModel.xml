@@ -14,9 +14,6 @@
           <e p="WayPointManagerWindow.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
-          <e p="Graveyard Kit" t="Include">
-            <e p="License.txt" t="Include" />
-          </e>
           <e p="Modular Buildings (100 assets)" t="Include">
             <e p="License.txt" t="Include" />
           </e>

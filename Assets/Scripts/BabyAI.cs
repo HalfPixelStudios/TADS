@@ -12,7 +12,7 @@ public class BabyAI : MonoBehaviour
 {
     private NavMeshAgent agent;
     [SerializeField] private List<Vector3> destinations;
-    private int index;
+    private int index=0;
     
     
     [SerializeField] private Vector3 target;

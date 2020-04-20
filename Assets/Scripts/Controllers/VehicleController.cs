@@ -57,6 +57,8 @@ public class VehicleController : Possesable
 
     private void OnCollisionEnter(Collision other)
     {
+        if (other.rigidbody == null) return;
+        print(other.rigidbody.velocity.magnitude + rb.velocity.magnitude > 1);
         
         if (other.rigidbody.velocity.magnitude + rb.velocity.magnitude > 1)
         {
@@ -71,13 +73,7 @@ public class VehicleController : Possesable
         
     }
 
-    private void OnCollisionStay(Collision other)
-    {
-        if (other.gameObject.GetComponent<VehicleController>() != null)
-        {
-            rb.velocity = Vector3.zero;
-        }
-    }
+    
 
     public override void PossessedBehavior() {
 
@@ -103,7 +99,7 @@ public class VehicleController : Possesable
         transform.Rotate(Vector3.up,turnSpeed*inp.x*Time.deltaTime*turnScale);
 
         //move car
-        rb.velocity=curVelo * transform.forward * Time.deltaTime;
+        rb.velocity=curVelo * transform.forward;
 
 
         /*        
