@@ -20,7 +20,7 @@ public class ScreenManager : MonoBehaviour {
 
         float screenHeight = 2 * Camera.main.orthographicSize;
         float screenWidth = screenHeight * Camera.main.aspect;
-
+        //Debug.Log($"{Camera.main.orthographicSize}, {Camera.main.aspect}");
         //Set size of capture cam
         Global.captureCam.orthographicSize = Camera.main.orthographicSize;
 
