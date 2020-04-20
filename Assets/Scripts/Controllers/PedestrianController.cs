@@ -37,7 +37,7 @@ public class PedestrianController : Possesable
             transform.LookAt(_pathAi.target);
             var angles = transform.rotation.eulerAngles;
             transform.rotation=Quaternion.Euler(0,angles.y,0);
-            transform.position+= transform.forward * speed;
+            transform.position+= transform.forward * speed * Time.deltaTime;
             
 
         }
