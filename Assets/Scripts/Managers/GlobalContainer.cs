@@ -12,6 +12,7 @@ public class GlobalContainer : MonoBehaviour {
     public Camera captureCam;
     public GameObject endUI;
     public GameObject baby;
+    public ParticleSystem fire;
 
 
     void Awake() {

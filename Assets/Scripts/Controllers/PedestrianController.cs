@@ -10,6 +10,7 @@ public class PedestrianController : Possesable
     private Rigidbody rb;
     [SerializeField]private float speed;
     private Animator anim;
+    public float stoppingDistance;
 
     void Start()
     {
@@ -21,20 +22,30 @@ public class PedestrianController : Possesable
     }
     public override void DefaultBehavior()
     {
-        if (_pathAi.target != null)
+        float d = Vector3.Distance(transform.position, _pathAi.target);
+        if (d < stoppingDistance)
+        {
+            _pathAi.setNextNode();
+        }
+        if (_pathAi.target != Vector3.zero)
         {
             anim.SetBool("moving",true);
+            
+
             transform.LookAt(_pathAi.target);
             var angles = transform.rotation.eulerAngles;
             transform.rotation=Quaternion.Euler(0,angles.y,0);
+            rb.velocity = transform.forward * speed;
             
-            transform.position+= transform.forward * speed;
-            
+
         }
         else
         {
+            rb.velocity=Vector3.zero;
             anim.SetBool("moving",false);
         }
+        
+        
         
         
         

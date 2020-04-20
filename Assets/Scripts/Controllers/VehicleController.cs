@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GlobalContainer;
 
 public class VehicleController : Possesable
 {
@@ -8,7 +10,7 @@ public class VehicleController : Possesable
     private PathAI _pathAi;
     private Rigidbody rb;
 
-    
+    //public 
     public float speed;
     public float turnSpeed;
     public float accel; //acceleration/brake increment
@@ -16,7 +18,6 @@ public class VehicleController : Possesable
     public float decay; //slow down due to friction
     public float maxFwdSpeed;
     public float maxBkdSpeed;
-
     public float stoppingDistance;
 
     private float curVelo;
@@ -54,6 +55,30 @@ public class VehicleController : Possesable
         
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        
+        if (other.rigidbody.velocity.magnitude + rb.velocity.magnitude > 1)
+        {
+            ParticleSystem fire = Instantiate(Global.fire,transform);
+            fire.Play();
+            if (isPossessed)
+            {
+                Global.possesor.SetPossessed(Camera.main.GetComponent<Possesable>());
+            }
+            Destroy(this);
+        }
+        
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.GetComponent<VehicleController>() != null)
+        {
+            rb.velocity = Vector3.zero;
+        }
+    }
+
     public override void PossessedBehavior() {
 
         Vector2 inp = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -78,7 +103,7 @@ public class VehicleController : Possesable
         transform.Rotate(Vector3.up,turnSpeed*inp.x*Time.deltaTime*turnScale);
 
         //move car
-        transform.position += curVelo * transform.forward * Time.deltaTime;
+        rb.velocity=curVelo * transform.forward * Time.deltaTime;
 
 
         /*        
