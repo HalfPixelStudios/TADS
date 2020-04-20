@@ -35,13 +35,12 @@ public class PedestrianController : Possesable
             transform.LookAt(_pathAi.target);
             var angles = transform.rotation.eulerAngles;
             transform.rotation=Quaternion.Euler(0,angles.y,0);
-            rb.velocity = transform.forward * speed;
+            transform.position+= transform.forward * speed;
             
 
         }
         else
         {
-            rb.velocity=Vector3.zero;
             anim.SetBool("moving",false);
         }
         
