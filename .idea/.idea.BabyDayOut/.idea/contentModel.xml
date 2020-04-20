@@ -25,7 +25,6 @@
           <e p="DepthMask.shader" t="Include" />
         </e>
         <e p="Scripts" t="Include">
-          <e p="BabyAI.cs" t="Include" />
           <e p="Controllers" t="Include">
             <e p="BabyController.cs" t="Include" />
             <e p="CameraController.cs" t="Include" />
@@ -51,6 +50,7 @@
             <e p="ScreenManager.cs" t="Include" />
           </e>
           <e p="PathAI.cs" t="Include" />
+          <e p="PizzaOrders.cs" t="Include" />
           <e p="Posses" t="Include">
             <e p="Possesable.cs" t="Include" />
             <e p="Possesor.cs" t="Include" />
