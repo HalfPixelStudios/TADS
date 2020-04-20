@@ -7,8 +7,18 @@ public class VehicleController : Possesable
     // Start is called before the first frame update
     private PathAI _pathAi;
     private Rigidbody rb;
-    [SerializeField]private float speed;
-    [SerializeField]private float stoppingDistance;
+
+    
+    public float speed;
+    public float turnSpeed;
+    public float accel; //acceleration/brake increment
+    public float brake;
+    public float decay; //slow down due to friction
+    public float maxSpeed;
+
+    public float stoppingDistance;
+
+    private float curVelo;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,14 +53,30 @@ public class VehicleController : Possesable
         
     }
 
-    public override void PossessedBehavior()
-    {
-        float turn = Input.GetAxis("Horizontal");
-        float dir = Input.GetAxis("Vertical");
-        
+    public override void PossessedBehavior() {
+
+        Vector2 inp = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        //forward movement
+        if (inp.y > 0) { curVelo += accel; }
+        else if (inp.y < 0) { curVelo -= brake; }
+
+        curVelo -= decay; //apply 'friction'
+
+        curVelo = Mathf.Clamp(curVelo, 0, maxSpeed);
+
+        //turning
+        //transform.Rotate();
+
+        //move car
+        transform.position += curVelo * Vector3.forward * Time.deltaTime;
+
+
+        /*        
         rb.angularVelocity=new Vector3(0,turn*5,0);
         print(transform.forward);
         rb.velocity = dir * transform.forward * speed*5;
+        */
     }
 
     public override void AnyBehavior() {
