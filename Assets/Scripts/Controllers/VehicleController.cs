@@ -39,11 +39,10 @@ public class VehicleController : Possesable
         if (_pathAi.target != Vector3.zero)
         {
             
-
             transform.LookAt(_pathAi.target);
             var angles = transform.rotation.eulerAngles;
             transform.rotation=Quaternion.Euler(0,angles.y,0);
-            rb.velocity = transform.forward * speed * Time.deltaTime;
+            rb.velocity = transform.forward * speed;
             
 
         }
@@ -69,6 +68,7 @@ public class VehicleController : Possesable
                 Global.possesor.SetPossessed(Camera.main.GetComponent<Possesable>());
             }
             Destroy(this);
+            Destroy(_pathAi);
         }
         
     }
