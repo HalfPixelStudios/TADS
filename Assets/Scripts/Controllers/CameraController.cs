@@ -7,6 +7,7 @@ using static GlobalContainer;
 public class CameraController : Possesable {
 
     [Range(0f,5f)] public float panSpeed;
+    [Range(0f, 5f)] public float followSpeed;
     [Range(0f, 400f)] public float rotateSpeed;
 
     Camera cam;
@@ -155,9 +156,10 @@ public class CameraController : Possesable {
 
         Vector3 pos = transform.position;
         Vector3 target = focus.position;
-        float newX = Mathf.Lerp(transform.position.x, target.x, Time.deltaTime * panSpeed);
-        float newY = Mathf.Lerp(transform.position.y, target.y, Time.deltaTime * panSpeed);
-        float newZ = Mathf.Lerp(transform.position.z, target.z, Time.deltaTime * panSpeed);
+        float newX = Mathf.Lerp(transform.position.x, target.x, Time.deltaTime * followSpeed);
+        float newY = Mathf.Lerp(transform.position.y, target.y, Time.deltaTime * followSpeed);
+        float newZ = Mathf.Lerp(transform.position.z, target.z, Time.deltaTime * followSpeed);
+        newY = 0;
         transform.position = new Vector3(newX, newY, newZ);
         //cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, zoom,0.7f);
 
