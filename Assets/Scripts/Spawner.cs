@@ -13,6 +13,8 @@ public class Spawner : MonoBehaviour
 
     WayPoint waypoint;
 
+    Color[] skintones = { new Color(1,1,1,1), new Color(0,(float)30/255, (float)144 /255,1), new Color((float)13 /255, (float)65 /255, (float)42 /255,1),new Color((float)51 /255, (float)32 /255, (float)11 /255,1),new Color(0.5f,0.5f,0.5f,1)};
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +33,10 @@ public class Spawner : MonoBehaviour
         {
             GameObject g = Instantiate(prefab, transform.position, Quaternion.identity, parent);
             PedestrianController pc = g.GetComponent<PedestrianController>();
-            pc.speed = 0.5f + Random.Range(0f,0.5f);
+            pc.speed = 1 + Random.Range(0f,0.25f);
+
+            //give random color
+            g.GetComponentInChildren<SkinnedMeshRenderer>().material.color = skintones[Random.Range(0,skintones.Length)];
 
             pedestrianCount += 1;
             float rnd = Random.Range(0f,1f);
