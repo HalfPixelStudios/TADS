@@ -61,15 +61,17 @@ public class VehicleController : Possesable
         if (inp.y > 0) { curVelo += accel; }
         else if (inp.y < 0) { curVelo -= brake; }
 
-        curVelo -= decay; //apply 'friction'
+        if (curVelo != 0) {
+            curVelo -= (curVelo / Mathf.Abs(curVelo) * decay); //apply 'friction' in the opposite direction of motion
+        }
 
-        curVelo = Mathf.Clamp(curVelo, 0, maxSpeed);
+        curVelo = Mathf.Clamp(curVelo, -maxSpeed, maxSpeed);
 
         //turning
-        //transform.Rotate();
+        transform.Rotate(Vector3.up,turnSpeed*inp.x*Time.deltaTime);
 
         //move car
-        transform.position += curVelo * Vector3.forward * Time.deltaTime;
+        transform.position += curVelo * transform.forward * Time.deltaTime;
 
 
         /*        
