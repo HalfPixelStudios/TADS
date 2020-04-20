@@ -10,6 +10,7 @@ public class CameraController : Possesable {
     [Range(0f, 400f)] public float rotateSpeed;
 
     Camera cam;
+    Rigidbody rb;
 
     Transform focus = null;
 
@@ -20,6 +21,7 @@ public class CameraController : Possesable {
 
     void Awake() {
         cam = GetComponentInChildren<Camera>();
+        rb = GetComponent<Rigidbody>();
         //zoom = cam.orthographicSize;
     }
 
@@ -159,6 +161,7 @@ public class CameraController : Possesable {
         transform.position = new Vector3(newX, newY, newZ);
         //cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, zoom,0.7f);
 
+        rb.velocity = Vector3.zero;
     }
 
     public void SetFocus(Transform focus) {
