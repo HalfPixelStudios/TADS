@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &3094995791766127494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987723332338154612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90b81113a04c41499b71c5acef1cb5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPossessed: 0
+  speed: 0
+  turnSpeed: 0
+  accel: 0
+  brake: 0
+  decay: 0
+  maxFwdSpeed: 0
+  maxBkdSpeed: 0
+  aiTurnThreshold: 0
+  stoppingDistance: 0
+--- !u!1 &7564338214721725721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29528245697072336}
+  - component: {fileID: 5184974884148864714}
+  - component: {fileID: 2094147299666454750}
+  m_Layer: 0
+  m_Name: Truck 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &29528245697072336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564338214721725721}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.24375, z: -0.000000029802322}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8317209705896709735}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5184974884148864714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564338214721725721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90b81113a04c41499b71c5acef1cb5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPossessed: 0
+  speed: 0
+  turnSpeed: 0
+  accel: 0
+  brake: 0
+  decay: 0
+  maxFwdSpeed: 0
+  maxBkdSpeed: 0
+  aiTurnThreshold: 0
+  stoppingDistance: 0
+--- !u!114 &2094147299666454750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564338214721725721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ccfbf703deb4820b9db9603bf02db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destinations: []
+  target: {x: 0, y: 0, z: 0}
+--- !u!1001 &4727878984808319737
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 29528245697072336}
+    m_Modifications:
+    - target: {fileID: 336431947796035213, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_Name
+      value: truck
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c, type: 3}
+--- !u!1 &4987723332338154612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 336431947796035213, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4727878984808319737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8317209705896709735 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3670546714561823902, guid: 65dcbf5a16d776b4d88dbdac6f66ab6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4727878984808319737}
+  m_PrefabAsset: {fileID: 0}

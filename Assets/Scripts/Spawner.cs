@@ -15,9 +15,6 @@ public class Spawner : MonoBehaviour
     {
         StartCoroutine(Spawn());
         
-
-
-
     }
 
     IEnumerator Spawn(){
