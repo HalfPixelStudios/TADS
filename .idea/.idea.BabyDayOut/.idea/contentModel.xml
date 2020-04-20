@@ -20,6 +20,9 @@
           <e p="Nature Kit" t="Include">
             <e p="License.txt" t="Include" />
           </e>
+          <e p="Watercraft pack (30 assets)" t="Include">
+            <e p="License.txt" t="Include" />
+          </e>
         </e>
         <e p="Resources" t="Include">
           <e p="DepthMask.shader" t="Include" />
@@ -59,6 +62,7 @@
           <e p="Sound" t="Include">
             <e p="SoundPlayer.cs" t="Include" />
           </e>
+          <e p="Spawner.cs" t="Include" />
           <e p="TrafficLightPoint.cs" t="Include" />
           <e p="UISys.cs" t="Include" />
           <e p="WayPoint.cs" t="Include" />

@@ -33,7 +33,7 @@ public class GlobalContainer : MonoBehaviour {
     void Update()
     {
         timer += Time.deltaTime;
-         t.text= timeLimit-timer;
+         t.text= (timeLimit-timer).ToString();
         if (timer > timeLimit)
         {
             dead();

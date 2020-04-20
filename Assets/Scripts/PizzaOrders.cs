@@ -26,7 +26,9 @@ public class PizzaOrders : MonoBehaviour
     {
         if (Vector3.Distance(target, transform.position) < 2)
         {
+            
             index += 1;
+            GlobalContainer.Global.timer = 0;
             if (index > destinations.Count)
             {
                 GlobalContainer.Global.win();
