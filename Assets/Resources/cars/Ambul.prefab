@@ -76,7 +76,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPossessed: 0
-  speed: 2
   turnSpeed: 90
   accel: 0.1
   brake: 0.06

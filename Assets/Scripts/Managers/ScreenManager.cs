@@ -40,6 +40,12 @@ public class ScreenManager : MonoBehaviour {
 
     void Update() {
         
+        if (Input.GetKeyDown(KeyCode.M)) {
+            RenderTexture rt = Global.captureCam.targetTexture;
+
+            byte[] bytes;
+            
+        }
     }
 
 

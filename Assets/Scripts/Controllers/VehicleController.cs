@@ -63,6 +63,15 @@ public class VehicleController : Possesable
                 inp.x = 1;
             }
             driverInput = inp;
+
+            /*
+            Vector3 twist = Vector3.Project(transform.up,Vector3.up);
+            float mag = twist.y;
+
+            if (mag < 0.5) {
+                inp = Vector2.zero;
+            }
+            */
             
 
         }
