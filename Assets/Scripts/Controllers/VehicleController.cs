@@ -88,7 +88,7 @@ public class VehicleController : Possesable
         if (other.rigidbody == null) return;
         print(other.rigidbody.velocity.magnitude + rb.velocity.magnitude > 1);
         
-        if (other.rigidbody.velocity.magnitude + rb.velocity.magnitude > 0.5f)
+        if (other.rigidbody.velocity.magnitude + rb.velocity.magnitude > 1)
         {
             ParticleSystem fire = Instantiate(Global.fire,transform);
             fire.Play();

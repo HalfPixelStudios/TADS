@@ -6,14 +6,8 @@ using UnityEngine.UI;
 public class UISys : MonoBehaviour
 {
     private Text textComp;
-    string message = "Due to unfortunate circumstances, " +
-                     "you have been turned into an omnipotent deity." +
-                     " However, you are still short on pocket change " +
-                     "so you decide to work as a pizza delivery man. " +
-                     "There is one catch however, you do not have a " +
-                     "tangible form. Therefore, using your new founded " +
-                     "powers, you must possess other mortals to complete " +
-                     "the delivery before the pizza gets cold.";
+    string message = "Due to unfortunate circumstances, you have been turned into an omnipotent deity. " +
+                     "It seems as if your powers come from this baby. Maybe you should protect it?";
     
     // Start is called before the first frame update
     void Start()
@@ -30,17 +24,14 @@ public class UISys : MonoBehaviour
             textComp.text+= letter;
             if (letter == '?' || letter == '.')
             {
-                yield return new WaitForSeconds(0.9f);
-                textComp.text = "";
+                yield return new WaitForSeconds(1f);
             }
             else
             {
-                yield return new WaitForSeconds(0.02f);
+                yield return new WaitForSeconds(0.05f);
                 
             }
             
         }
-
-        gameObject.SetActive(false);
     }
 }
