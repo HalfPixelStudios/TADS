@@ -93,7 +93,7 @@ public class CameraController : Possesable {
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            focus = Global.baby.transform;
+            focus = Global.pizzaTruck.transform;
         }
 
         //possess key
@@ -163,7 +163,7 @@ public class CameraController : Possesable {
         transform.position = new Vector3(newX, newY, newZ);
         //cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, zoom,0.7f);
 
-        rb.velocity = Vector3.zero;
+//        rb.velocity = Vector3.zero;
     }
 
     public void SetFocus(Transform focus) {

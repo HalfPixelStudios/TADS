@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -13,13 +14,14 @@ public class GlobalContainer : MonoBehaviour {
     public ScreenManager screenManager;
     public Camera captureCam;
     public GameObject endUI;
-    public GameObject baby;
     public ParticleSystem fire;
     public float timer;
     public float timeLimit;
-    private Text t;
+    [SerializeField]private Text t;
     [SerializeField] public GameObject pizza;
+    private bool won = false;
 
+    [SerializeField] public GameObject pizzaTruck;
 
 
     void Awake() {
@@ -32,24 +34,33 @@ public class GlobalContainer : MonoBehaviour {
 
     void Update()
     {
-        timer += Time.deltaTime;
-         t.text= (timeLimit-timer).ToString();
-        if (timer > timeLimit)
+        if (!won)
         {
-            dead();
+            timer += Time.deltaTime;
+            t.text= (timeLimit-timer).ToString();
+            if (timer > timeLimit)
+            {
+                dead();
+            }
+            
         }
+        
 
     }
 
 
     public void dead()
     {
-        
-        
+        SceneManager.LoadScene("Menu");
+
+
+
     }
 
     public void win()
     {
-        //Camera.main.GetComponent<CameraController>().zoomTo(100);
+        t.text = "You won! Good Job";
+        won = true;
+
     }
 }

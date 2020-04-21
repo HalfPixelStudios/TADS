@@ -14,21 +14,21 @@ public class ShipController : VehicleController
     
     public override void DefaultBehavior()
     {
-        timer += Time.deltaTime;
-        if (timer > shotInterval)
-        {
-            if (Vector3.Distance(Global.baby.transform.position, transform.position) < range)
-            {
-                GameObject c = Instantiate(cannonBall, transform.position, Quaternion.identity);
-                c.transform.LookAt(Global.baby.transform);
-                c.GetComponent<Rigidbody>().velocity = transform.forward * ballSpeed;
-
-
-            }
-
-            timer = 0;
-
-        }
+//        timer += Time.deltaTime;
+//        if (timer > shotInterval)
+//        {
+//            if (Vector3.Distance(Global.baby.transform.position, transform.position) < range)
+//            {
+//                GameObject c = Instantiate(cannonBall, transform.position, Quaternion.identity);
+//                c.transform.LookAt(Global.baby.transform);
+//                c.GetComponent<Rigidbody>().velocity = transform.forward * ballSpeed;
+//
+//
+//            }
+//
+//            timer = 0;
+//
+//        }
         
         
 
